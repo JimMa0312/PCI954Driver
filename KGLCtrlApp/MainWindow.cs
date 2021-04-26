@@ -25,8 +25,8 @@ namespace KGLCtrlApp
             InitializeComponent();
             switchCtrls = new List<SwitchCtrl>();
             InitLastWorkSpace();
-            drawSwitchCtrlUI();
             kGL3U24 = new KGL3U24();
+            drawSwitchCtrlUI();
         }
 
         private void LoadWorkSpaceToolStripMenuItem_Click(object sender, EventArgs e)
