@@ -91,16 +91,17 @@ namespace LibKGL3U24
         /// <returns>操作成功返回true，失败返回false</returns>
         public bool CtrlOutputChannels(ushort channels, bool isEnable)
         {
+            ushort willOutputReg = OutputReg;
             if (isEnable)
             {
-                OutputReg |= channels;
+                willOutputReg |= channels;
             }
             else
             {
-                OutputReg &= (ushort)(~channels);
+                willOutputReg &= (ushort)(~channels);
             }
 
-            return KglOutputSet(OutputReg);
+            return KglOutputSet(willOutputReg);
         }
 
         /// <summary>
