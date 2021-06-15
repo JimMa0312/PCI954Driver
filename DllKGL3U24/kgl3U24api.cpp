@@ -3,8 +3,11 @@
 
 #include <Public.h>
 
+#ifdef __cplusplus
+	EXTERN_C_START
+#endif // cplusplus
 
-HANDLE __stdcall Kgl3u24Open()
+HANDLE Kgl3u24Open()
 {
 	HANDLE hDevice = CreateFile(USER_DEVICE_NAME,
 		GENERIC_READ | GENERIC_WRITE,
@@ -23,7 +26,7 @@ HANDLE __stdcall Kgl3u24Open()
 	return hDevice;
 }
 
-BOOL __stdcall Kgl3u24Close(HANDLE deviceHandle)
+BOOL Kgl3u24Close(HANDLE deviceHandle)
 {
 	if (deviceHandle == INVALID_HANDLE_VALUE || deviceHandle == NULL)
 	{
@@ -39,7 +42,7 @@ BOOL __stdcall Kgl3u24Close(HANDLE deviceHandle)
 	return FALSE;
 }
 
-BOOL __stdcall Kgl3u24OutputSet(HANDLE deviceHandle, UINT16 param)
+BOOL Kgl3u24OutputSet(HANDLE deviceHandle, UINT16 param)
 {
 	SWITCH_WRITE_DATA swi;
 	BOOL deviceCtlResult = FALSE;
@@ -64,3 +67,7 @@ BOOL __stdcall Kgl3u24OutputSet(HANDLE deviceHandle, UINT16 param)
 	
 	return deviceCtlResult;
 }
+
+#ifdef __cplusplus
+	EXTERN_C_END
+#endif // __cplusplus
